@@ -104,6 +104,16 @@ Audio Synthesis → WAV File
 | Real node integration   | Cookie-authenticated JSON-RPC              |
 | Extensibility           | Clean `CompactTx` / `TxNote` abstractions  |
 
+## Converting to mp4
+
+```bash
+ffmpeg -loop 1 -i waveform.png -i input.wav \
+  -c:v libx264 -preset medium -crf 23 \
+  -c:a aac -b:a 128k -shortest \
+  -pix_fmt yuv420p -movflags +faststart \
+  output.mp4
+```
+
 ## Future Possibilities
 
 - Better synthesis (multiple oscillators, filters, real instrument samples)
